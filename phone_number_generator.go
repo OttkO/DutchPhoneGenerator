@@ -23,8 +23,18 @@ func generateDutchPhoneNumber(answer *string) {
 	*answer = fmt.Sprintf("%d%d%d%d%d%d%d%d%d%d", firstDigit, secondDigit, thirdDigit, fourthDigit, fifthDigit, sixthDigit, seventhDigit, eightDigit, ninthDigit, tenthDigit)
 }
 
+func generateDutchPhoneNumberWithForLoop(answer *string) {
+	s1 := rand.NewSource(time.Now().UnixNano())
+	r1 := rand.New(s1)
+	*answer = "06"
+	for i := 0; i < 8; i++ {
+		*answer = fmt.Sprintf("%s%d", *answer, r1.Intn(10))
+	}
+}
+
 func main() {
 	result := "empty"
-	generateDutchPhoneNumber(&result)
+	//generateDutchPhoneNumber(&result)
+	generateDutchPhoneNumberWithForLoop(&result)
 	fmt.Println(result)
 }
